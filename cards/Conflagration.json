@@ -1,0 +1,27 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "Conflagration",
+        "category": "Ironclad",
+        "name_chs": "焚烧",
+        "name_eng": "Conflagration",
+        "cost": 1,
+        "rarity": "Rare",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "对所有敌人造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+        "text_default_chs": "对所有敌人造成2点伤害",
+        "text_upgraded_chs": "对所有敌人造成2点伤害",
+        "text_raw_eng": "Deal {Damage:diff()} damage to ALL enemies {Repeat:diff()} {Repeat:plural:time|times}.",
+        "variables": {
+            "Damage": "2m",
+            "Repeat": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Repeat": 1
+            }
+        }
+    }
+}

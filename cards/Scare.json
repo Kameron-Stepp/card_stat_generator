@@ -1,0 +1,28 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "Scare",
+        "category": "Silent",
+        "name_chs": "恫吓",
+        "name_eng": "Scare",
+        "cost": 0,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "给予所有敌人1层[gold]虚弱[\/gold]。",
+        "text_default_chs": "消耗,给予所有敌人1层虚弱。",
+        "text_upgraded_chs": "给予所有敌人1层虚弱。",
+        "text_raw_eng": "Apply 1 [gold]Weak[\/gold] to ALL enemies.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

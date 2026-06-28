@@ -1,6 +1,3 @@
-from pathlib import Path
-import json
-import argparse
 from sqlite_database import insert_run_data
 
 # Takes the Json data of a Slay the Spire 2 run history file and 
@@ -38,39 +35,3 @@ def parse_file_json(data):
     }
     
     insert_run_data(run_data)
-
-parser = argparse.ArgumentParser(description="Slay the Spire 2 Data exporter")
-parser.add_argument("folder", help="Folder path that contains all of the Slay the Spire 2 run save data", type=str)
-parser.add_argument("-t", "--test", help="idicates the folder argument is 1 file for testing purposes", required=False, action="store_true")
-args = parser.parse_args()
-
-folder = Path(args.folder)
-
-results = {}
-
-json_data: str
-
-num_of_files: int = 0
-
-# todo add a way to skip files if they are already in metadata so it speeds up runtime
-if not args.test:
-    for file_path in folder.iterdir():
-        if not file_path.is_file() or file_path.suffix != ".run":
-            continue
-
-        with open(file_path, "r") as f:
-            data = f.read()
-            json_data = json.loads(data)
-            num_of_files += 1
-        
-    
-else:
-    print("Operating in test mode")
-    with open(folder, "r") as f:
-        data = f.read()
-        json_data = json.loads(data)
-        parse_file_json(json_data)
-
-        
-
-

@@ -1,0 +1,28 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "HighFive",
+        "category": "Necrobinder",
+        "name_chs": "击掌",
+        "name_eng": "High Five",
+        "cost": 2,
+        "rarity": "Uncommon",
+        "type": "Attack",
+        "targetType": "AllEnemies",
+        "text_raw_chs": "[gold]奥斯提[\/gold]对所有敌人\n造成{OstyDamage:diff()}点伤害并给予它们\n{VulnerablePower:diff()}层[gold]易伤[\/gold]。",
+        "text_default_chs": "奥斯提对所有敌人\n造成11点伤害并给予它们\n2层易伤。",
+        "text_upgraded_chs": "奥斯提对所有敌人\n造成15点伤害并给予它们\n3层易伤。",
+        "text_raw_eng": "[gold]Osty[\/gold] deals {OstyDamage:diff()} damage\nand applies {VulnerablePower:diff()} [gold]Vulnerable[\/gold]\nto ALL enemies.",
+        "variables": {
+            "VulnerablePower": 2,
+            "OstyDamage": "11m"
+        },
+        "upgrades": {
+            "varChange": {
+                "OstyDamage": 2,
+                "Vulnerable": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "SpoilsOfBattle",
+        "category": "Regent",
+        "name_chs": "战利品",
+        "name_eng": "Spoils of Battle",
+        "cost": 1,
+        "rarity": "Common",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]铸造[\/gold]{Forge:diff()}。\n抽{Cards:diff()}张牌。",
+        "text_default_chs": "铸造5。\n抽2张牌。",
+        "text_upgraded_chs": "铸造11。\n抽2张牌。",
+        "text_raw_eng": "[gold]Forge[\/gold] {Forge:diff()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+        "variables": {
+            "Cards": 2,
+            "Forge": 5
+        },
+        "upgrades": {
+            "varChange": {
+                "Forge": 3
+            }
+        }
+    }
+}

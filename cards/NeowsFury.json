@@ -1,0 +1,31 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "NeowsFury",
+        "category": "Event",
+        "name_chs": "涅奥之怒",
+        "name_eng": "Neow's Fury",
+        "cost": 1,
+        "rarity": "Ancient",
+        "type": "Attack",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "造成{Damage:diff()}点伤害。\n将你[gold]弃牌堆[\/gold]中的至多{Cards:diff()}张牌放入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "消耗,造成10点伤害。\n将你弃牌堆中的至多2张牌放入你的手牌。",
+        "text_upgraded_chs": "消耗,造成18点伤害。\n将你弃牌堆中的至多4张牌放入你的手牌。",
+        "text_raw_eng": "Deal {Damage:diff()} damage.\nPut up to {Cards:diff()} {Cards:plural:card|cards} from your [gold]Discard Pile[\/gold] into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 2,
+            "Damage": "10m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Damage": 4,
+                "Cards": 1
+            }
+        }
+    }
+}

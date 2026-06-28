@@ -1,0 +1,29 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "NotYet",
+        "category": "Ironclad",
+        "name_chs": "时候未到",
+        "name_eng": "Not Yet",
+        "cost": 2,
+        "rarity": "Rare",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "回复{Heal:diff()}点生命。",
+        "text_default_chs": "消耗,回复10点生命。",
+        "text_upgraded_chs": "消耗,回复16点生命。",
+        "text_raw_eng": "Heal {Heal:diff()} HP.",
+        "variables": {
+            "Heal": "10m",
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "Heal": 3
+            }
+        }
+    }
+}

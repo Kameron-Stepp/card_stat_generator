@@ -1,0 +1,26 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "Parry",
+        "category": "Regent",
+        "name_chs": "招架",
+        "name_eng": "Parry",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Power",
+        "targetType": "Self",
+        "text_raw_chs": "[gold]君王之剑[\/gold]现在能让你获得{ParryPower:diff()}点[gold]格挡[\/gold]。",
+        "text_default_chs": "君王之剑现在能让你获得10点格挡。",
+        "text_upgraded_chs": "君王之剑现在能让你获得14点格挡。",
+        "text_raw_eng": "[gold]Sovereign Blade[\/gold] now gains {ParryPower:diff()} [gold]Block[\/gold].",
+        "variables": {
+            "ParryPower": 10
+        },
+        "upgrades": {
+            "varChange": {
+                "ParryPower": 4
+            }
+        }
+    }
+}

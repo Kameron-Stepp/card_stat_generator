@@ -1,0 +1,26 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "DualWield",
+        "category": "Event",
+        "name_chs": "双持",
+        "name_eng": "Dual Wield",
+        "cost": 1,
+        "rarity": "Event",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "选择一张攻击牌或能力牌。将该牌的{IfUpgraded:show:{Cards}张复制品|一张复制品}加入你的[gold]手牌[\/gold]。",
+        "text_default_chs": "选择一张攻击牌或能力牌。将该牌的一张复制品加入你的手牌。",
+        "text_upgraded_chs": "选择一张攻击牌或能力牌。将该牌的3张复制品加入你的手牌。",
+        "text_raw_eng": "Choose an Attack or Power card. Add {IfUpgraded:show:{Cards} copies|a copy} of that card into your [gold]Hand[\/gold].",
+        "variables": {
+            "Cards": 1
+        },
+        "upgrades": {
+            "varChange": {
+                "Cards": 1
+            }
+        }
+    }
+}

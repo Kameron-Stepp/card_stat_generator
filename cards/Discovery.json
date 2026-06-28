@@ -1,0 +1,28 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "Discovery",
+        "category": "Colorless",
+        "name_chs": "发现",
+        "name_eng": "Discovery",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "从3张随机牌中选择1张加入你的[gold]手牌[\/gold]。这张牌在本回合可以免费打出。",
+        "text_default_chs": "消耗,从3张随机牌中选择1张加入你的手牌。这张牌在本回合可以免费打出。",
+        "text_upgraded_chs": "从3张随机牌中选择1张加入你的手牌。这张牌在本回合可以免费打出。",
+        "text_raw_eng": "Choose 1 of 3 random cards to add into your [gold]Hand[\/gold]. It's free to play this turn.",
+        "variables": {
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "removedKeywords": [
+                "Exhaust"
+            ]
+        }
+    }
+}

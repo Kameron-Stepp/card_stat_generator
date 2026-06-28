@@ -1,0 +1,27 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "DrumOfBattle",
+        "category": "Ironclad",
+        "name_chs": "战鼓",
+        "name_eng": "Drum of Battle",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "抽{Cards:diff()}张牌。\n这张牌被[gold]消耗[\/gold]时，获得{Energy:energyIcons()}。",
+        "text_default_chs": "抽2张牌。\n这张牌被消耗时，获得2能量。",
+        "text_upgraded_chs": "抽2张牌。\n这张牌被消耗时，获得4能量。",
+        "text_raw_eng": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nWhen this card is [gold]Exhausted[\/gold], gain {Energy:energyIcons()}.",
+        "variables": {
+            "Cards": 2,
+            "Energy": 2
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 1
+            }
+        }
+    }
+}

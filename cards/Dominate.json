@@ -1,0 +1,30 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "Dominate",
+        "category": "Ironclad",
+        "name_chs": "主宰",
+        "name_eng": "Dominate",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "AnyEnemy",
+        "text_raw_chs": "给予{VulnerablePower:diff()}层[gold]易伤[\/gold]。\n敌人身上每有一层[gold]易伤[\/gold]，就获得{StrengthPerVulnerable:diff()}点[gold]力量[\/gold]。",
+        "text_default_chs": "消耗,给予1层易伤。\n敌人身上每有一层易伤，就获得1点力量。",
+        "text_upgraded_chs": "消耗,给予2层易伤。\n敌人身上每有一层易伤，就获得1点力量。",
+        "text_raw_eng": "Apply {VulnerablePower:diff()} [gold]Vulnerable[\/gold].\nGain {StrengthPerVulnerable:diff()} [gold]Strength[\/gold] for each [gold]Vulnerable[\/gold] on the enemy.",
+        "variables": {
+            "VulnerablePower": 1,
+            "StrengthPerVulnerable": 1,
+            "keywords": [
+                "Exhaust"
+            ]
+        },
+        "upgrades": {
+            "varChange": {
+                "VulnerablePower": 1
+            }
+        }
+    }
+}

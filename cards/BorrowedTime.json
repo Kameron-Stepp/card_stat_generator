@@ -1,0 +1,26 @@
+{
+    "game_version": "0.107.1",
+    "database_version": 2,
+    "card": {
+        "key": "BorrowedTime",
+        "category": "Necrobinder",
+        "name_chs": "预借时间",
+        "name_eng": "Borrowed Time",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "type": "Skill",
+        "targetType": "Self",
+        "text_raw_chs": "获得{Energy:energyIcons()}。\n所有卡牌在本回合耗能增加{ExtraCost:energyIcons()}。",
+        "text_default_chs": "获得4能量。\n所有卡牌在本回合耗能增加0。",
+        "text_upgraded_chs": "获得8能量。\n所有卡牌在本回合耗能增加0。",
+        "text_raw_eng": "Gain {Energy:energyIcons()}.\nCards cost an additional {ExtraCost:energyIcons()} this turn.",
+        "variables": {
+            "Energy": 4
+        },
+        "upgrades": {
+            "varChange": {
+                "Energy": 2
+            }
+        }
+    }
+}
