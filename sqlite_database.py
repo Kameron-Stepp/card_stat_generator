@@ -1,5 +1,6 @@
 import sqlite3
 
+# The _get_character_id method might be able to replaced by inner Join, not quite sure
 
 def create_database(db_path="slay_the_spire_2_offline.db"):
     conn = sqlite3.connect(db_path)
@@ -127,42 +128,36 @@ def _store_enemy_death(data, cursor:sqlite3.Cursor):
         DO UPDATE SET
         death_count = death_count + 1
                    """, (c_id, enemy))
-# Todo card table should already be set up with each card name and id everything else can be 0
+
 def _store_card_stats(data, cursor: sqlite3.Cursor):
-    c_id = _get_character_id(data["character_name"], cursor)
+    #c_id = _get_character_id(data["character_name"], cursor)
     won = 0
     loss = 0
-    proccessed_cards = []
     if data["won"]:
         won += 1
     else:
         loss += 1
         
     for card in data["cards"]:  
-        name = card["name"].replace("CARD.", "")    
-        picked = 0  
-        skipped = 0
+        name = card["name"].replace("CARD.", "")
+        multi_name = name.split("_")
+        new_name: str = ""
+        for n in multi_name:
+	        new_name = new_name + n.capitalize()  
         if card["picked"]:
-            picked = 1
-        else:
-            skipped = 1
-        if name not in proccessed_cards:
             cursor.execute("""
                 UPDATE card_stats
                 SET times_picked = times_picked + ?,
-                times_skipped = times_skipped + ?,
                 deck_wins = deck_wins + ?,
-                deck_losses = deck_losses = ?
-                WHERE ? = character_id AND ? = card_name
-                """, (picked, skipped, won, loss, c_id, name))
-            proccessed_cards.append(name)
+                deck_losses = deck_losses + ?
+                WHERE ? = card_name
+                """, (1, won, loss, new_name))
         else:
             cursor.execute("""
                 UPDATE card_stats
-                SET times_picked = times_picked + ?,
-                times_skipped = times_skipped + ?,
-                WHERE ? = character_id AND ? = card_name
-                """, (picked, skipped, c_id, name))
+                SET times_skipped = times_skipped + ?
+                WHERE ? = card_name
+                """, (1, new_name))
    
 # This could just be an sql procdeure but a method does the same thing i think
 def _get_character_id(character_name: str, cursor: sqlite3.Cursor):

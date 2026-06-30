@@ -2,6 +2,7 @@ from sqlite_database import *
 from slay_the_spire_cards_parser import *
 from spire_data_decoder import *
 import argparse
+import time as t
 
 # Establish Arguments
 parser = argparse.ArgumentParser(description="Slay the Spire 2 Data exporter")
@@ -17,7 +18,7 @@ if args.new:
 
     # Add Cards to the card stat table
     parse_cards_json("cards", "slay_the_spire_2_offline.db")
-    parse_cards_json("cards", "slay_the_spire_2_offline.db")
+    parse_cards_json("cards", "slay_the_spire_2_online.db")
     
 folder = Path(args.folder)
 results = {}
@@ -33,7 +34,7 @@ if not args.test:
         with open(file_path, "r") as f:
             data = f.read()
             json_data = json.loads(data)
-            num_of_files += 1
+            insert_run_data(parse_file_json(json_data)) # THis only puts data in offline database rn. 
         
     
 else:
@@ -41,4 +42,7 @@ else:
     with open(folder, "r") as f:
         data = f.read()
         json_data = json.loads(data)
-        parse_file_json(json_data)
+        start = t.time()
+        insert_run_data(parse_file_json(json_data))
+        end = t.time()
+        print(str(end - start) + " ")

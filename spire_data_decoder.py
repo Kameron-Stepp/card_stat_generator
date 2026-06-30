@@ -1,4 +1,3 @@
-from sqlite_database import insert_run_data
 
 # Takes the Json data of a Slay the Spire 2 run history file and 
 # reads the data into variables. It will return a dictionary containing each decoded value
@@ -33,5 +32,4 @@ def parse_file_json(data):
         "ascension": ascension,
         "cards": cards
     }
-    
-    insert_run_data(run_data)
+    return run_data
