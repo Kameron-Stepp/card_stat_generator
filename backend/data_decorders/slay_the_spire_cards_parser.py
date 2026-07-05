@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 import sqlite3
-from sqlite_database import insert_card_data
+from backend.sqlite_database import insert_card_data
 
 def parse_cards_json(card_folder, database):
     name : str

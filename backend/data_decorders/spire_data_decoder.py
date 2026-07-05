@@ -17,12 +17,21 @@ def parse_file_json(data):
         for room in act:
             floor_reached += 1
             for player_stat in room.get("player_stats", []):
-                for choice in player_stat.get("card_choices", []):
-                    cards.append({
-                    "name": choice["card"]["id"],
-                    "picked": choice["was_picked"],
-                    })
-           
+                choice = player_stat.get('card_choices', None)
+                if choice != None:
+                    for card in choice:
+                        cards.append({
+                        "name": card["card"]["id"],
+                        "picked": card["was_picked"],
+                        })
+                else:
+                    for card in player_stat.get("cards_gained", []):
+                        cards.append({
+                        "name": card["id"],
+                        "picked": True,
+                        })
+
+
     run_data = {
         "character_name": character_name,
         "enemy_name": enemy_name,

@@ -66,6 +66,14 @@ def create_database(db_path="slay_the_spire_2_offline.db"):
     )
     """)
 
+    # Files Holder for no repeat file reads
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS handled_files(
+        file_path TEXT PRIMARY KEY,
+        processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
     # Indexes
 
     # Website will frequently query runs by character
