@@ -1,10 +1,10 @@
 import CharacterCard from './character_card'
-import ironclad_img from './assets/spire_assets/background/char_select_ironclad.webp'
-import silent_img from './assets/spire_assets/background/char_select_silent.webp'
-import defect_img from './assets/spire_assets/background/char_select_defect.webp'
-import regent_img from './assets/spire_assets/background/char_select_regent.webp'
-import necrobinder_img from './assets/spire_assets/background/char_select_necrobinder.webp'
-import logo from './assets/spire_assets/background/logo.webp'
+import ironclad_img from '../assets/spire_assets/background/char_select_ironclad.webp'
+import silent_img from '../assets/spire_assets/background/char_select_silent.webp'
+import defect_img from '../assets/spire_assets/background/char_select_defect.webp'
+import regent_img from '../assets/spire_assets/background/char_select_regent.webp'
+import necrobinder_img from '../assets/spire_assets/background/char_select_necrobinder.webp'
+import logo from '../assets/spire_assets/background/logo.webp'
 import './Header.css'
 
  const characters = [

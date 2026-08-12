@@ -1,0 +1,28 @@
+#runTable {
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+}
+
+#runTable table {
+    width: 100%;
+}
+
+#runTable th,
+#runTable td {
+    text-align: center;
+    padding: 10px;
+}
+
+#run {
+    position: absolute;
+    left: 21%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+
+    height: 50vh;
+    width: 30%;
+    
+    align-items: center;
+}
