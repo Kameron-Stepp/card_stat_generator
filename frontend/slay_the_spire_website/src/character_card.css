@@ -1,0 +1,25 @@
+.character {
+  width: 75%;
+  height: 100px;
+
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 3px 3px black ;
+  word-wrap: break-word;
+  
+
+  border: 3px solid;
+  border-radius: 6px;
+  cursor: pointer;
+
+  margin-bottom: 20px;
+}
+
+.character:hover {
+  filter: brightness(60%)
+}
+
