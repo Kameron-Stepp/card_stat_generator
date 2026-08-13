@@ -5,7 +5,7 @@ import './character_card.css'
 export default function CharacterCard ({character}) {
     return (
     <button
-      className="character"
+      id="character"
       style={{ backgroundImage: `url(${character.src})`, borderColor: character.color}}
       onClick={reroute}
     >

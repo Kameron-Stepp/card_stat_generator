@@ -1,22 +1,12 @@
-.spireHeader {
-    position: fixed;
-    left: 0;
-    top: 0;
+#spireHeader img {
+    width: 75%
+}
 
-    width: 20%;
-    height: 100vh;
-    
+#characters {
+    width: 95%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px
-
-}
-
-.spireHeader img {
-    width: 75%;
-}
-.characters {
-    align-items:start;
-    width: 100%;
-}
+    gap: 20px;
+    align-self: center;
+} 
