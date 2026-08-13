@@ -57,6 +57,7 @@ function statBlocks(data) {
     <div id='stat-blocks'>
       <StatBlock data={{type: 'Runs', number: 76, percentage: null }}></StatBlock>
       <StatBlock data={{type: 'Wins', number: 32, percentage: '40.64%'}}></StatBlock>
+      <StatBlock data={{type: 'Wins', number: 32, percentage: '40.64%'}}></StatBlock>
     </div>
   )
 }
