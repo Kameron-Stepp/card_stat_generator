@@ -24,3 +24,22 @@
     width: 20%;
     text-align: center;
 }
+
+#top_history {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#top_history h2{
+    width: 50%;
+}
+
+select {
+    margin-left: 5%;
+    text-align: center;
+}
+
+#select {
+    text-align: end;
+}

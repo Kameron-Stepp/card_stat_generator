@@ -3,30 +3,25 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import RunHistory from './components/RunHistory'
-
-import ironclad_img from './assets/spire_assets/background/char_select_ironclad.webp'
-import silent_img from './assets/spire_assets/background/char_select_silent.webp'
-import defect_img from './assets/spire_assets/background/char_select_defect.webp'
-import regent_img from './assets/spire_assets/background/char_select_regent.webp'
-import necrobinder_img from './assets/spire_assets/background/char_select_necrobinder.webp'
 import StatBlock from './components/StatBlock'
 import Cards from './components/Cards'
 
 
  const characters = [
-    {name: "Ironclad", src: ironclad_img, color: 'red'},
-    {name: "Silent", src: silent_img, color: 'green'},
-    {name: "Defect", src: defect_img, color: 'blue'},
-    {name: "Regent", src: regent_img, color: 'orange'},
-    {name: "Necrobinder", src: necrobinder_img, color: '#470047'}
+    {name: "Ironclad", src: '/spire_assets/background/char_select_ironclad.webp', color: 'red'},
+    {name: "Silent", src: '/spire_assets/background/char_select_silent.webp', color: 'green'},
+    {name: "Defect", src: '/spire_assets/background/char_select_defect.webp', color: 'blue'},
+    {name: "Regent", src: '/spire_assets/background/char_select_regent.webp', color: 'orange'},
+    {name: "Necrobinder", src: '/spire_assets/background/char_select_necrobinder.webp', color: '#470047'}
   ]
 
 function App() {
   const [character, setCharacter] = useState(characters[0])
+
   return (
       <div id='wrapper'>
         <div id='header'>
-          <Header characters={characters}/>
+          <Header characters={characters} setSelectedCharacter={setCharacter}/>
         </div>
         <div id='center'>
           <div id='top'>
@@ -38,8 +33,11 @@ function App() {
             <div id='history'>
               <RunHistory/>
             </div>
-            <div id='cards'>
-              <Cards/>
+            <div id='card_section'>
+              <h2>Search<input id='card_search' type='search'></input></h2>
+              <div id='cards'>
+              <Cards selectedCharacter={character.name}/>
+            </div>
             </div>
           </div>
           <div id='card-details'>
