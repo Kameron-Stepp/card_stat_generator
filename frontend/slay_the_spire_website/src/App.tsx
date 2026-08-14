@@ -1,13 +1,13 @@
-import { useState } from 'react'
-
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import RunHistory from './components/RunHistory'
 import StatBlock from './components/StatBlock'
 import Cards from './components/Cards'
+import type {Character, Run, RunData} from './components/helpers/typing'
+import { formatTime } from './components/helpers/formating'
 
-
- const characters = [
+ const characters: Character[] = [
     {name: "Ironclad", src: '/spire_assets/background/char_select_ironclad.webp', color: 'red'},
     {name: "Silent", src: '/spire_assets/background/char_select_silent.webp', color: 'green'},
     {name: "Defect", src: '/spire_assets/background/char_select_defect.webp', color: 'blue'},
@@ -17,6 +17,25 @@ import Cards from './components/Cards'
 
 function App() {
   const [character, setCharacter] = useState(characters[0])
+  const [selectedCard, setSelectedCard] = useState(null)
+  const [runs, setRuns] = useState<Run[]>([])
+  const [stats, setStats] = useState<RunData>({wins: 0, losses: 0, avg_time: 0, runs:0})
+
+
+  // Get the Data for Run Table and Top Stats bar
+  useEffect(() => {
+        fetch(`http://localhost:3000/${character.name}/runs`)
+            .then(response => response.json())
+            .then(data => {
+                setRuns(data);
+            })
+
+        fetch(`http://localhost:3000/${character.name}/runs/stats`)
+          .then(response => response.json())
+          .then(data => {
+              setStats(data)
+          })
+    }, [character]);
 
   return (
       <div id='wrapper'>
@@ -26,18 +45,16 @@ function App() {
         <div id='center'>
           <div id='top'>
             <h2>{character.name.toUpperCase()}</h2>
-            <p>Detailed Statistics for {character.name}</p>
           </div>
-          {statBlocks(null)}
+          {statBlocks(stats)}
           <div id='center-section'>
             <div id='history'>
-              <RunHistory/>
+              <RunHistory runs={runs}/>
             </div>
             <div id='card_section'>
               <h2>Search<input id='card_search' type='search'></input></h2>
               <div id='cards'>
               <Cards selectedCharacter={character.name}/>
-            </div>
             </div>
           </div>
           <div id='card-details'>
@@ -45,17 +62,30 @@ function App() {
           </div>
         </div>
       </div>
-
-  
+    </div>
   )
 }
 // This function will be changed when given actual data via a map function
-function statBlocks(data) {
+function statBlocks(stats: RunData) {
+  console.log(stats.wins, stats.avg_time, stats.runs)
+  
+  const win_percent = stats.runs > 0
+    ? `${((stats.wins / stats.runs) * 100).toFixed(1)}%`
+    : "0%";
+
+  const losses = stats.runs - stats.wins;
+
+  const loss_percent = stats.runs > 0
+    ? `${((losses / stats.runs) * 100).toFixed(1)}%`
+    : "0%";
+
+
   return (
     <div id='stat-blocks'>
-      <StatBlock data={{type: 'Runs', number: 76, percentage: null }}></StatBlock>
-      <StatBlock data={{type: 'Wins', number: 32, percentage: '40.64%'}}></StatBlock>
-      <StatBlock data={{type: 'Wins', number: 32, percentage: '40.64%'}}></StatBlock>
+      <StatBlock data={{type: "Runs", number: String(stats.runs), percentage: ''}} ></StatBlock>
+      <StatBlock data={{type: "Wins", number: String(stats.wins), percentage: win_percent }}></StatBlock>
+      <StatBlock data={{type: "Losses", number: String(losses), percentage: loss_percent}}></StatBlock>
+      <StatBlock data={{type: "Avg Time", number: formatTime(stats.avg_time), percentage: ''}}></StatBlock>
     </div>
   )
 }

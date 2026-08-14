@@ -15,7 +15,7 @@ app.get("/:character/cards", (req, res) => {
     const character = req.params.character
 
     const sql =  `
-    SELECT card_name, times_picked, times_skipped, deck_wins, deck_losses FROM card_stats
+    SELECT card_name FROM card_stats
     JOIN characters
     ON characters.id = card_stats.character_id
     WHERE characters.name = ?
@@ -35,7 +35,7 @@ app.get("/:character/runs", (req, res) => {
     const character = req.params.character
 
     const sql =  `
-    SELECT * FROM runs
+    SELECT won, floor_reached, run_time_seconds, ascension FROM runs
     JOIN characters
     ON characters.id = runs.character_id
     WHERE characters.name = ?
@@ -49,6 +49,26 @@ app.get("/:character/runs", (req, res) => {
         res.status(500).json({ error: err.message });
     }
 }) 
+
+app.get("/:character/runs/stats", (req, res) => {
+    const character = req.params.character
+
+    const sql = 
+    `SELECT Count(*) as runs, avg(run_time_seconds) as avg_time, sum(won) as wins
+    FROM runs
+    JOIN characters
+    ON characters.id = runs.character_id
+    WHERE characters.name = ?  ;`
+
+    try {
+        const stats = db.prepare(sql).get(character)
+        res.json(stats)
+
+    } catch {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+})
 
 app.get("/:character/enemies", (req, res) => {
     const character = req.params.character

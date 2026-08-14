@@ -1,16 +1,7 @@
 import './RunHistory.css'
+import type { RunHistoryProps } from './helpers/typing'
 
-export default function RunHistory() {
-    const data = []
-
-    for (let i = 0; i < 100; i++) {
-        data.push([
-            Math.floor(Math.random() * 20),
-            Math.floor(Math.random() * 3000),
-            Math.floor(Math.random() * 60),
-            Math.random() > 0.5 ? "Win" : "Loss"
-        ])
-    }
+export default function RunHistory({runs}: RunHistoryProps)  {  
 
     return (
         <>
@@ -37,11 +28,12 @@ export default function RunHistory() {
                     </thead>
 
                     <tbody>
-                        {data.map((run, index) => (
+                        {runs.map((run, index) => (
                             <tr key={index}>
-                                {run.map((cell, cellIndex) => (
-                                    <td key={cellIndex}>{cell}</td>
-                                ))}
+                                <td>{run.ascension}</td>
+                                <td>{run.run_time_seconds}</td>
+                                <td>{run.floor_reached}</td>
+                                <td>{run.won}</td>
                             </tr>
                         ))}
                     </tbody>

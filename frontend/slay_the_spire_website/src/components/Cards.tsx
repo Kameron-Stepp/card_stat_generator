@@ -4,14 +4,10 @@ import './Cards.css'
 
 type Card = {
     card_name: string;
-    deck_wins: number;
-    deck_losses: number;
-    times_picked: number;
-    times_skipped: number;
 };
 
 type CardsProps = {
-    selectedCharacter: string;
+    selectedCharacter: String;
 };
 
 export default function Cards({ selectedCharacter }: CardsProps) {
@@ -23,7 +19,6 @@ export default function Cards({ selectedCharacter }: CardsProps) {
             .then(response => response.json())
             .then(data => {
                 setCards(data);
-                console.log(data)
             });
     }, [selectedCharacter]);
 
@@ -31,10 +26,16 @@ export default function Cards({ selectedCharacter }: CardsProps) {
     return (
         <>
             {cards.map(card => (
-                <div onClick={() => {
-                    alert(card.card_name)
-                }}key={card.card_name} className="card">
-                    <img alt={card.card_name} src={getCardImage(card.card_name)} onError={(e) => {
+                <div onClick={(e) => {
+                    e.currentTarget.style.border == '' ?
+                        e.currentTarget.style.border = '2px solid red':
+                    e.currentTarget.style.border = ''
+                }}
+                key={card.card_name}
+                className="card">
+                    <img alt={card.card_name}
+                    src={getCardImage(card.card_name)}
+                     onError={(e) => {
                         e.currentTarget.src = "/spire_assets/cards/missing.jpg"
                     }}/>
                 </div>

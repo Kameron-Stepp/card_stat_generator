@@ -1,0 +1,32 @@
+export type Character = {
+    name: String,
+    color: String,
+    src: String
+}
+
+
+export type Run = {
+    won: number,
+    floor_reached: number,
+    run_time_seconds: number,
+    ascension: number
+}
+
+export type RunHistoryProps = {
+    runs: Run[],
+}
+
+export type Card = {
+    card_name: string,
+    times_picked: number,
+    times_skipped: number,
+    deck_wins: number,
+    deck_losses: number
+}
+
+export type RunData = {
+    wins: number,
+    losses: number,
+    runs: number,
+    avg_time: number,
+}
