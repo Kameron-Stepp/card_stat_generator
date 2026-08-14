@@ -1,0 +1,10 @@
+#data {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    
+}
+
+#data h3 {
+    width: 25%;
+}

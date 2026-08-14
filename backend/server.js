@@ -1,13 +1,16 @@
 const express = require('express')
 const sqlite = require('better-sqlite3')
 const cors = require('cors')
+const path = require('path')
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-const db = new sqlite("slay_the_spire_2_offline.db")
+const db = new sqlite(
+    path.join(__dirname, "database", "slay_the_spire_2_offline.db")
+)
 
 console.log("Connected to SQLite")
 
@@ -107,7 +110,6 @@ app.get("/enemies", (req, res) => {
 }) 
 
 app.get("/:card", (req, res) => {
-    const character = req.params.character
     const card = req.params.card
 
     const sql = `
@@ -116,7 +118,7 @@ app.get("/:card", (req, res) => {
         WHERE card_name = ?
     `
     try {
-        const found_card = db.prepare(sql).all(card)
+        const found_card = db.prepare(sql).get(card)
         res.json(found_card)
     } catch {
         console.error(err);

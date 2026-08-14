@@ -1,8 +1,10 @@
 import sqlite3
+from pathlib import Path
+DATABASE = Path(__file__).parent / "database" / "slay_the_spire_2_offline.db"
 
 # The _get_character_id method might be able to replaced by inner Join, not quite sure
 
-def create_database(db_path="slay_the_spire_2_offline.db"):
+def create_database(db_path=DATABASE):
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA foreign_keys = ON")
     cur = conn.cursor()
@@ -35,7 +37,7 @@ def create_database(db_path="slay_the_spire_2_offline.db"):
     # Card statistics
     cur.execute("""
     CREATE TABLE IF NOT EXISTS card_stats (
-        card_name TEXT UNIQUE NOT NULL,
+        card_name TEXT NOT NULL,
         character_id INTEGER NOT NULL,
 
         times_picked INTEGER NOT NULL DEFAULT 0,
@@ -107,7 +109,7 @@ def create_database(db_path="slay_the_spire_2_offline.db"):
     conn.commit()
     conn.close()
 
-def insert_run_data(data, db_path="slay_the_spire_2_offline.db"):
+def insert_run_data(data, db_path=DATABASE):
     con = sqlite3.connect(db_path)
     cur = con.cursor()
     _store_run_data(data, cur)
@@ -151,7 +153,7 @@ def _store_card_stats(data, cursor: sqlite3.Cursor):
         multi_name = name.split("_")
         new_name: str = ""
         for n in multi_name:
-	        new_name = new_name + n.capitalize()  
+            new_name = new_name + n.capitalize()  
         if card["picked"]:
             cursor.execute("""
                 UPDATE card_stats
@@ -180,6 +182,6 @@ def _get_character_id(character_name: str, cursor: sqlite3.Cursor):
 def insert_card_data(card_name, character_name, cursor):
     id = _get_character_id(character_name, cursor)
     cursor.execute("""
-    Insert into card_stats (card_name, character_id)
+    INSERT OR IGNORE INTO card_stats (card_name, character_id)
     VALUES(?,?)
      """, (card_name, id))

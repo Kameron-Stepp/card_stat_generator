@@ -1,7 +1,7 @@
 export type Character = {
-    name: String,
-    color: String,
-    src: String
+    name: string,
+    color: string,
+    src: string
 }
 
 

@@ -6,6 +6,7 @@ import StatBlock from './components/StatBlock'
 import Cards from './components/Cards'
 import type {Character, Run, RunData} from './components/helpers/typing'
 import { formatTime } from './components/helpers/formating'
+import CardDetails from './components/CardDetails'
 
  const characters: Character[] = [
     {name: "Ironclad", src: '/spire_assets/background/char_select_ironclad.webp', color: 'red'},
@@ -17,10 +18,10 @@ import { formatTime } from './components/helpers/formating'
 
 function App() {
   const [character, setCharacter] = useState(characters[0])
-  const [selectedCard, setSelectedCard] = useState(null)
+  const [selectedCard, setSelectedCard] = useState('')
   const [runs, setRuns] = useState<Run[]>([])
   const [stats, setStats] = useState<RunData>({wins: 0, losses: 0, avg_time: 0, runs:0})
-
+  const [search, setSearch] = useState("")
 
   // Get the Data for Run Table and Top Stats bar
   useEffect(() => {
@@ -40,26 +41,26 @@ function App() {
   return (
       <div id='wrapper'>
         <div id='header'>
-          <Header characters={characters} setSelectedCharacter={setCharacter}/>
+          <Header characters={characters} setSelectedCharacter={setCharacter} setSelectedCard={setSelectedCard} setSearch={setSearch}/>
         </div>
         <div id='center'>
           <div id='top'>
             <h2>{character.name.toUpperCase()}</h2>
           </div>
           {statBlocks(stats)}
-          <div id='center-section'>
+          <div className={`center-section ${selectedCard === '' ? '' : 'selected'}` }>
             <div id='history'>
               <RunHistory runs={runs}/>
             </div>
             <div id='card_section'>
-              <h2>Search<input id='card_search' type='search'></input></h2>
+              <h2>Search<input id='card_search' type='search' value={search} onChange={(e) => setSearch(e.target.value)}></input></h2>
               <div id='cards'>
-              <Cards selectedCharacter={character.name}/>
+              <Cards search={search} selectedCharacter={character.name} setSelectedCard={setSelectedCard} selectedCard={selectedCard}/>
             </div>
           </div>
-          <div id='card-details'>
-
-          </div>
+        </div>
+        <div className={`card_details ${selectedCard === '' ? '' : 'selected'}`}>
+          <CardDetails selectedCard={selectedCard}></CardDetails>
         </div>
       </div>
     </div>
@@ -67,8 +68,6 @@ function App() {
 }
 // This function will be changed when given actual data via a map function
 function statBlocks(stats: RunData) {
-  console.log(stats.wins, stats.avg_time, stats.runs)
-  
   const win_percent = stats.runs > 0
     ? `${((stats.wins / stats.runs) * 100).toFixed(1)}%`
     : "0%";

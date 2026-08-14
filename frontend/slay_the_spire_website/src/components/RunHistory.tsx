@@ -1,17 +1,37 @@
+import { useState } from 'react'
 import './RunHistory.css'
+import { formatTime } from './helpers/formating'
 import type { RunHistoryProps } from './helpers/typing'
 
 export default function RunHistory({runs}: RunHistoryProps)  {  
+
+    const [sortBy, setSortBy] = useState('Ascension')
+
+    const sortedRuns = [...runs].sort((a, b) => {
+        switch (sortBy) {
+            case "Wins":
+                return b.won - a.won;
+
+            case "Ascension":
+                return b.ascension - a.ascension;
+
+            case "Time":
+                return b.run_time_seconds - a.run_time_seconds;
+
+            default:
+                return 0;
+        }
+    });
 
     return (
         <>
             <div id="top_history">
                 <h2>Run History</h2>
                 <h2 id="select">Sort By
-                <select>
+                <select value={sortBy} onChange={(e) => {setSortBy(e.target.value)}}>
                     <option value="Wins">Wins</option>
                     <option value="Ascension">Ascension</option>
-                    <option value="time">Time</option>
+                    <option value="Time">Time</option>
 
                 </select>
                 </h2>
@@ -28,12 +48,12 @@ export default function RunHistory({runs}: RunHistoryProps)  {
                     </thead>
 
                     <tbody>
-                        {runs.map((run, index) => (
+                        {sortedRuns.map((run, index) => (
                             <tr key={index}>
                                 <td>{run.ascension}</td>
-                                <td>{run.run_time_seconds}</td>
+                                <td>{formatTime(run.run_time_seconds)}</td>
                                 <td>{run.floor_reached}</td>
-                                <td>{run.won}</td>
+                                {run.won ? <td>Win</td> : <td>Loss</td>}
                             </tr>
                         ))}
                     </tbody>

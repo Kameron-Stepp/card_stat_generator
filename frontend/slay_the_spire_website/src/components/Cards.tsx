@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import './Cards.css'
+import { file_format } from "./helpers/formating";
 
 
 type Card = {
@@ -7,10 +8,13 @@ type Card = {
 };
 
 type CardsProps = {
-    selectedCharacter: String;
+    selectedCharacter: string;
+    setSelectedCard: React.Dispatch<React.SetStateAction<string>>;
+    selectedCard: string,
+    search: string
 };
 
-export default function Cards({ selectedCharacter }: CardsProps) {
+export default function Cards({ selectedCharacter, setSelectedCard, selectedCard, search}: CardsProps) {
     
     
     const [cards, setCards] = useState<Card[]>([]);
@@ -22,19 +26,29 @@ export default function Cards({ selectedCharacter }: CardsProps) {
             });
     }, [selectedCharacter]);
 
+    const filtered_cards = cards.filter(card => {
+    const cardName = card.card_name
+        .toLowerCase()
+        .replace(/\s/g, '');
+
+    const searchValue = search
+        .toLowerCase()
+        .replace(/\s/g, '');
+
+    return cardName.includes(searchValue);
+});
+
     // There will be images missing since the game updats and changes cards. should be solid once 1.0 releases
     return (
         <>
-            {cards.map(card => (
-                <div onClick={(e) => {
-                    e.currentTarget.style.border == '' ?
-                        e.currentTarget.style.border = '2px solid red':
-                    e.currentTarget.style.border = ''
+            {filtered_cards.map(card => (
+                <div onClick={() => {
+                    selectedCard === card.card_name ? setSelectedCard('') : setSelectedCard(card.card_name)
                 }}
                 key={card.card_name}
-                className="card">
+                className={`card ${selectedCard=== card.card_name ? "selected": ""}`}>
                     <img alt={card.card_name}
-                    src={getCardImage(card.card_name)}
+                    src={file_format(card.card_name)}
                      onError={(e) => {
                         e.currentTarget.src = "/spire_assets/cards/missing.jpg"
                     }}/>
@@ -44,11 +58,3 @@ export default function Cards({ selectedCharacter }: CardsProps) {
     );
 }
 
-
-function getCardImage(cardName: string) {
-    const fileName = cardName
-        .replace(/([a-z])([A-Z])/g, "$1_$2")
-        .toLowerCase();
-
-    return `spire_assets/cards/${fileName}.webp`;
-}
