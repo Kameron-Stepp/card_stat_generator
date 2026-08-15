@@ -11,13 +11,21 @@
     height: 100%;
     border-collapse: collapse;
     table-layout: fixed;
+
+    color: #dce2e9;
 }
 
 #runTable th {
     position: sticky;
     top: 0;
-    background-color: black;
-    color: white;
+
+    background-color: #182330;
+    color: #aeb9c6;
+
+    border-bottom: 1px solid #344354;
+
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 #runTable th,
@@ -26,21 +34,45 @@
     text-align: center;
 }
 
+#runTable td {
+    border-bottom: 1px solid #202c39;
+}
+
+#runTable tr:hover td {
+    background-color: #17222e;
+}
+
 #top_history {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-#top_history h2{
+#top_history h2 {
     width: 50%;
+
+    color: #e5e9ef;
 }
 
 select {
     margin-left: 5%;
     text-align: center;
+
+    background-color: #182330;
+    color: #dce2e9;
+
+    border: 1px solid #344354;
+    border-radius: 5px;
+
+    padding: 5px 10px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #60758c;
 }
 
 #select {
     text-align: end;
+    color: #aab5c2;
 }

@@ -1,3 +1,27 @@
 span {
     padding: 2px;
+
+    background-color: #111a24;
+    border: 1px solid #293747;
+    border-radius: 8px;
+
+    color: #e5e9ef;
+    text-align: center;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px rgba(255, 255, 255, 0.02);
+}
+
+span h4 {
+    color: #8995a5;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+span h3 {
+    color: #f0f2f5;
+    font-size: 24px;
+    font-weight: 700;
 }

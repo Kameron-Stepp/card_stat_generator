@@ -1,12 +1,27 @@
-.card img{
+.card img {
     width: 100%;
     pointer-events: none;
 }
 
-.card.selected {
-    border: 2px solid white
-}
-
 .card {
     padding: 10px;
+
+    background: #151f2b;
+    border: 2px solid #2d3b4b;
+    border-radius: 6px;
+
+    transition:
+        border-color 0.15s ease,
+        background-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.card:hover {
+    background: #1b2734;
+    border-color: #60758c;
+}
+
+.card.selected {
+    border: 2px solid #d7b45a;
+    box-shadow: 0 0 10px rgba(215, 180, 90, 0.25);
 }

@@ -53,7 +53,7 @@ export default function RunHistory({runs}: RunHistoryProps)  {
                                 <td>{run.ascension}</td>
                                 <td>{formatTime(run.run_time_seconds)}</td>
                                 <td>{run.floor_reached}</td>
-                                {run.won ? <td>Win</td> : <td>Loss</td>}
+                                {run.won ? <td className='win'>Win</td> : <td className='loss'>Loss</td>}
                             </tr>
                         ))}
                     </tbody>

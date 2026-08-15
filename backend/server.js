@@ -67,7 +67,7 @@ app.get("/:character/runs/stats", (req, res) => {
         const stats = db.prepare(sql).get(character)
         res.json(stats)
 
-    } catch {
+    } catch  (err) {
         console.error(err);
         res.status(500).json({ error: err.message });
     }
@@ -120,7 +120,7 @@ app.get("/:card", (req, res) => {
     try {
         const found_card = db.prepare(sql).get(card)
         res.json(found_card)
-    } catch {
+    } catch (err) {
         console.error(err);
         res.status(500).json({ error: err.message });
     }

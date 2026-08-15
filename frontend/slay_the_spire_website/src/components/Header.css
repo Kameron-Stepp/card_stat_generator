@@ -1,5 +1,5 @@
 #spireHeader img {
-    width: 75%
+    width: 75%;
 }
 
 #characters {
@@ -9,4 +9,4 @@
     flex-direction: column;
     gap: 20px;
     align-self: center;
-} 
+}
