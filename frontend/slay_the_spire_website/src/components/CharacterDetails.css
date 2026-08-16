@@ -1,13 +1,38 @@
+.card_details h1 {
+    margin: 0 0 var(--gap-sm) 0;
+    color: var(--accent);
+    font-size: clamp(18px, 2vw, 26px);
+}
+
 #data {
-    height: 80%;
+    flex: 1 1 auto;
+    min-height: 0;
     width: 100%;
+
     display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-md);
+    align-content: flex-start;
 }
 
 #data h3 {
-    width: 25%;
+    flex: 1 1 200px;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+
+    padding-bottom: 8px;
 
     color: #dce2e9;
     font-weight: 600;
+    font-size: clamp(14px, 1.4vw, 18px);
     border-bottom: 1px solid #293747;
+}
+
+.percent {
+    color: var(--accent);
+    font-weight: 700;
 }

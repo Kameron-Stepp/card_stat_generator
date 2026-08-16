@@ -9,11 +9,11 @@ import { formatTime } from './components/helpers/formating'
 import CardDetails from './components/CardDetails'
 
  const characters: Character[] = [
-    {name: "Ironclad", src: '/spire_assets/background/char_select_ironclad.webp', color: 'red'},
-    {name: "Silent", src: '/spire_assets/background/char_select_silent.webp', color: 'green'},
-    {name: "Defect", src: '/spire_assets/background/char_select_defect.webp', color: 'blue'},
-    {name: "Regent", src: '/spire_assets/background/char_select_regent.webp', color: 'orange'},
-    {name: "Necrobinder", src: '/spire_assets/background/char_select_necrobinder.webp', color: '#470047'}
+    {name: "Ironclad", src: '/spire_assets/background/char_select_ironclad.webp', color: '#c0392b'},
+    {name: "Silent", src: '/spire_assets/background/char_select_silent.webp', color: '#2e9e63'},
+    {name: "Defect", src: '/spire_assets/background/char_select_defect.webp', color: '#3f8fd9'},
+    {name: "Regent", src: '/spire_assets/background/char_select_regent.webp', color: '#d98a2b'},
+    {name: "Necrobinder", src: '/spire_assets/background/char_select_necrobinder.webp', color: '#9b3fc4'}
   ]
 
 function App() {
@@ -39,9 +39,9 @@ function App() {
     }, [character]);
 
   return (
-      <div id='wrapper'>
+      <div id='wrapper' style={{ '--accent': character.color } as React.CSSProperties}>
         <div id='header'>
-          <Header characters={characters} setSelectedCharacter={setCharacter} setSelectedCard={setSelectedCard} setSearch={setSearch}/>
+          <Header characters={characters} selectedCharacterName={character.name} setSelectedCharacter={setCharacter} setSelectedCard={setSelectedCard} setSearch={setSearch}/>
         </div>
         <div id='center'>
           <div id='top'>
