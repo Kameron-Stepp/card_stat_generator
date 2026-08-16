@@ -4,7 +4,7 @@ import Header from './components/Header'
 import RunHistory from './components/RunHistory'
 import StatBlock from './components/StatBlock'
 import Cards from './components/Cards'
-import type {Character, Run, RunData} from './components/helpers/typing'
+import {type Character, type Run, type RunData} from './components/helpers/typing'
 import { formatTime } from './components/helpers/formating'
 import CardDetails from './components/CardDetails'
 
@@ -22,7 +22,6 @@ function App() {
   const [runs, setRuns] = useState<Run[]>([])
   const [stats, setStats] = useState<RunData>({wins: 0, losses: 0, avg_time: 0, runs:0})
   const [search, setSearch] = useState("")
-
   // Get the Data for Run Table and Top Stats bar
   useEffect(() => {
         fetch(`http://localhost:3000/${character.name}/runs`)
@@ -41,7 +40,12 @@ function App() {
   return (
       <div id='wrapper' style={{ '--accent': character.color } as React.CSSProperties}>
         <div id='header'>
-          <Header characters={characters} selectedCharacterName={character.name} setSelectedCharacter={setCharacter} setSelectedCard={setSelectedCard} setSearch={setSearch}/>
+          <Header 
+          characters={characters}
+          selectedCharacterName={character.name}
+          setSelectedCharacter={setCharacter}
+          setSelectedCard={setSelectedCard}
+          setSearch={setSearch}/>
         </div>
         <div id='center'>
           <div id='top'>

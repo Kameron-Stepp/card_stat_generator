@@ -18,3 +18,22 @@
 
     overflow-y: auto;
 }
+
+#display_options {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  
+    align-self: center;
+    padding-bottom: var(--gap-md);
+}
+
+.display_option {
+    text-align: center;
+    cursor: pointer;
+}
+
+.display_option.selected{
+    color: var(--accent);
+}

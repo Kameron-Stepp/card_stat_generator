@@ -30,3 +30,10 @@ export type RunData = {
     runs: number,
     avg_time: number,
 }
+
+export const DISPLAY_OPTION = Object.freeze({
+    GENERAL: "General",
+    ENEMIES: "Enemies",
+    CARD_DETAILS: "Card Details",
+    RUN_DETAILS: "Run Details"
+})
