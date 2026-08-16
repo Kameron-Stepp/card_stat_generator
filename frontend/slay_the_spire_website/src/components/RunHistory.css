@@ -4,6 +4,8 @@
     min-height: 0;
 
     overflow-y: auto;
+
+    scrollbar-color: #344354 #111a24;
 }
 
 #runTable table {

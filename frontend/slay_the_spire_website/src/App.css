@@ -51,7 +51,7 @@
     padding: var(--gap-md) var(--gap-lg);
 
     background-color: #0b1118;
-    overflow: hidden;
+    overflow: auto;
 }
 
 
